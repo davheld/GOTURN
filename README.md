@@ -34,6 +34,14 @@ If you find this code useful in your research, please cite:
 }
 ```
 
+Contents:
+* [Installation](#installation)
+* [Downloading a pretrained model](#pretrained-model)
+* [Visualize the tracking performance](#visualize-the-tracking-performance)
+* [Evaluate the tracker](#evaluate-the-tracker)
+* [Train the tracker](#train-the-tracker)
+* [Visualizing datasets](#visualizing-datasets)
+
 ## Installation
 
 ### Install dependencies:
