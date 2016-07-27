@@ -1,0 +1,17 @@
+net: "TRAIN_FILE"
+test_iter: 75
+test_initialization: true
+test_interval: 1000
+base_lr: 0.000001
+lr_policy: "step"
+gamma: 0.1
+stepsize: 100000
+display: 20
+max_iter: 450000
+momentum: 0.9
+weight_decay: 0.0005
+snapshot: 50000
+snapshot_prefix: "SOLVERSTATE_DIR/caffenet_train"
+random_seed: RANDOM_SEED
+device_id: DEVICE_ID
+solver_mode: GPU

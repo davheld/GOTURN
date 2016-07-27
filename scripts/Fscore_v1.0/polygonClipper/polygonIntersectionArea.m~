@@ -1,0 +1,20 @@
+function polygonIntersectionArea(P1, P2)
+% 
+
+P1.x=[-1 1 1 -1]; P1.y=[-1 -1 1 1]; P1.hole=0;
+
+P2.x=[-2 0.8 0.4 -2]; P2.y=[-.5 -.2 0 .5]; P2.hole=0;
+
+
+type = 1; % A and B
+P3 = PolygonClip(P1,P2,type);
+
+for np=1:length(P3)
+    p = P3(np);
+    pArea = polyarea(p.x, p.y);
+    fprintf('Intersection %i: %f', np, pArea);
+
+end
+
+
+
