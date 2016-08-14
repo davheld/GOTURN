@@ -1,7 +1,4 @@
 net: "TRAIN_FILE"
-test_iter: 75
-test_initialization: true
-test_interval: 1000
 base_lr: 0.000001
 lr_policy: "step"
 gamma: 0.1
