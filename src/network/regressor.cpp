@@ -43,7 +43,7 @@ void Regressor::SetupNetwork(const string& deploy_proto,
                              const bool do_train) {
 #ifdef CPU_ONLY
   printf("Setting up Caffe in CPU mode\n");
-  caffe::Caffe::set_mode(Caffe::CPU);
+  caffe::Caffe::set_mode(caffe::Caffe::CPU);
 #else
   printf("Setting up Caffe in GPU mode with ID: %d\n", gpu_id);
   caffe::Caffe::SetDevice(gpu_id);
