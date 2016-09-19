@@ -14,6 +14,10 @@ find_package(TinyXML REQUIRED)
 find_package( OpenCV REQUIRED )
 message("Open CV version is ${OpenCV_VERSION}")
 
+if(CUDA_FOUND)
+include_directories(${CUDA_INCLUDE_DIRS})
+endif()
+
 find_package(Caffe REQUIRED)
 include_directories(${Caffe_INCLUDE_DIRS})
 add_definitions(${Caffe_DEFINITIONS})    # ex. -DCPU_ONLY
