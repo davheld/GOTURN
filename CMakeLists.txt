@@ -21,7 +21,9 @@ endif()
 find_package(Caffe REQUIRED)
 include_directories(${Caffe_INCLUDE_DIRS})
 add_definitions(${Caffe_DEFINITIONS})    # ex. -DCPU_ONLY
-message("Caffe_DIR is ${Caffe_DIR}")
+message("Caffe_DIR is ${Caffe_DIR}")	#specify Caffe_DIR in /cmake/Modules/findCaffe.cmake
+
+set(GLOG_LIB glog)
 
 add_library (${PROJECT_NAME}
 src/helper/bounding_box.cpp
