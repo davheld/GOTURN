@@ -1,7 +1,7 @@
 // Visualize the ALOV dataset.
 
 #include <string>
-
+#include <iostream>
 #include "loader/loader_alov.h"
 #include "loader/loader_vot.h"
 #include "loader/loader_imagenet_det.h"
