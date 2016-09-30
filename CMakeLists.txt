@@ -14,10 +14,16 @@ find_package(TinyXML REQUIRED)
 find_package( OpenCV REQUIRED )
 message("Open CV version is ${OpenCV_VERSION}")
 
+if(CUDA_FOUND)
+include_directories(${CUDA_INCLUDE_DIRS})
+endif()
+
 find_package(Caffe REQUIRED)
 include_directories(${Caffe_INCLUDE_DIRS})
 add_definitions(${Caffe_DEFINITIONS})    # ex. -DCPU_ONLY
-message("Caffe_DIR is ${Caffe_DIR}")
+message("Caffe_DIR is ${Caffe_DIR}")	#specify Caffe_DIR in /cmake/Modules/findCaffe.cmake
+
+set(GLOG_LIB glog)
 
 add_library (${PROJECT_NAME}
 src/helper/bounding_box.cpp
@@ -68,27 +74,27 @@ include_directories(src)
 #add_library (${PROJECT_NAME} ${srcs} ${hdrs})
 
 add_executable (test_tracker_vot src/test/test_tracker_vot.cpp)
-target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS} ${Caffe_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS} ${Caffe_LIBRARIES} ${GLOG_LIB})
 target_link_libraries (test_tracker_vot ${PROJECT_NAME})
 
 add_executable (test_tracker_alov src/test/test_tracker_alov.cpp)
-target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS} ${Caffe_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS} ${Caffe_LIBRARIES} ${GLOG_LIB})
 target_link_libraries (test_tracker_alov ${PROJECT_NAME})
 
 add_executable (save_videos_vot src/test/save_videos_vot.cpp)
-target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS} ${Caffe_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS} ${Caffe_LIBRARIES} ${GLOG_LIB})
 target_link_libraries (save_videos_vot ${PROJECT_NAME})
 
 add_executable (train src/train/train.cpp)
-target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS} ${Boost_LIBRARIES} ${Caffe_LIBRARIES} ${TinyXML_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS} ${Boost_LIBRARIES} ${Caffe_LIBRARIES} ${TinyXML_LIBRARIES} ${GLOG_LIB})
 target_link_libraries (train ${PROJECT_NAME})
 
 add_executable (show_tracker_vot src/visualizer/show_tracker_vot.cpp)
-target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS} ${Caffe_LIBRARIES} ${Boost_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS} ${Caffe_LIBRARIES} ${Boost_LIBRARIES} ${GLOG_LIB})
 target_link_libraries (show_tracker_vot ${PROJECT_NAME})
 
 add_executable (show_tracker_alov src/visualizer/show_tracker_alov.cpp)
-target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS} ${Caffe_LIBRARIES} ${Boost_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS} ${Caffe_LIBRARIES} ${Boost_LIBRARIES} ${GLOG_LIB})
 target_link_libraries (show_tracker_alov ${PROJECT_NAME})
 
 add_executable (show_imagenet src/visualizer/show_imagenet.cpp)
