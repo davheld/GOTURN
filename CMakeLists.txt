@@ -17,16 +17,16 @@ message("Open CV version is ${OpenCV_VERSION}")
 find_package(CUDA REQUIRED)
 include_directories(${CUDA_INCLUDE_DIRS})
 endif()
-# Note: If can't find CUDA, then set the path manually
-set(CUDA_INCLUDE_DIRS /path_to_cuda/include)
+# Note: If can't find CUDA, please uncomment the below line and set the path manually
+# set(CUDA_INCLUDE_DIRS /path_to_cuda/include)
 
-# Note: download and bulid caffe, then modify the path here
-set(Caffe_DIR /path_to_caffe/build/install)
-set(Caffe_INCLUDE_DIRS /path_to_caffe/build/install/include)
 find_package(Caffe REQUIRED)
 include_directories(${Caffe_INCLUDE_DIRS})
 add_definitions(${Caffe_DEFINITIONS})    # ex. -DCPU_ONLY
 message("Caffe_DIR is ${Caffe_DIR}")	#specify Caffe_DIR in /cmake/Modules/findCaffe.cmake
+# Note: If can't find Caffe, please uncomment the below line and set the path manually
+# set(Caffe_DIR /path_to_caffe/build/install)
+# set(Caffe_INCLUDE_DIRS /path_to_caffe/build/install/include)
 
 set(GLOG_LIB glog)
 
@@ -82,8 +82,8 @@ include_directories(src/native)
 add_executable (test_tracker_vot src/test/test_tracker_vot.cpp)
 target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS} ${Caffe_LIBRARIES} ${GLOG_LIB})
 target_link_libraries (test_tracker_vot ${PROJECT_NAME})
-# Note: download trax and build it, then modify the path here
-target_link_libraries(${PROJECT_NAME} /path_to_trax/build/libtrax.so)
+# Note: If can't find trax, please download trax and build it, then uncomment the below line and set the path manually
+# target_link_libraries(${PROJECT_NAME} /path_to_trax/build/libtrax.so)
 
 add_executable (test_tracker_alov src/test/test_tracker_alov.cpp)
 target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS} ${Caffe_LIBRARIES} ${GLOG_LIB})
