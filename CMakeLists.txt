@@ -14,10 +14,15 @@ find_package(TinyXML REQUIRED)
 find_package( OpenCV REQUIRED )
 message("Open CV version is ${OpenCV_VERSION}")
 
-if(CUDA_FOUND)
+find_package(CUDA REQUIRED)
 include_directories(${CUDA_INCLUDE_DIRS})
 endif()
+# Note: If can't find CUDA, then set the path manually
+set(CUDA_INCLUDE_DIRS /path_to_cuda/include)
 
+# Note: download and bulid caffe, then modify the path here
+set(Caffe_DIR /path_to_caffe/build/install)
+set(Caffe_INCLUDE_DIRS /path_to_caffe/build/install/include)
 find_package(Caffe REQUIRED)
 include_directories(${Caffe_INCLUDE_DIRS})
 add_definitions(${Caffe_DEFINITIONS})    # ex. -DCPU_ONLY
@@ -67,6 +72,7 @@ src/native/vot.h
 
 # Add src to include directories.
 include_directories(src)
+include_directories(src/native)
 
 # Add all files.
 #file(GLOB_RECURSE hdrs src/*.h*)
@@ -76,6 +82,8 @@ include_directories(src)
 add_executable (test_tracker_vot src/test/test_tracker_vot.cpp)
 target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS} ${Caffe_LIBRARIES} ${GLOG_LIB})
 target_link_libraries (test_tracker_vot ${PROJECT_NAME})
+# Note: download trax and build it, then modify the path here
+target_link_libraries(${PROJECT_NAME} /path_to_trax/build/libtrax.so)
 
 add_executable (test_tracker_alov src/test/test_tracker_alov.cpp)
 target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS} ${Caffe_LIBRARIES} ${GLOG_LIB})
