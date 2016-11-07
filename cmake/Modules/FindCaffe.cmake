@@ -13,7 +13,7 @@ find_path(Caffe_INCLUDE_DIRS NAMES caffe/caffe.hpp caffe/common.hpp caffe/net.hp
 
 find_library(Caffe_LIBRARIES NAMES caffe
   HINTS
-  ${Caffe_DIR}/lib)
+  ${Caffe_DIR}/build/lib)
 
 message("lib_dirs:${Caffe_LIBRARIES}")
 
