@@ -16,7 +16,6 @@ message("Open CV version is ${OpenCV_VERSION}")
 
 find_package(CUDA REQUIRED)
 include_directories(${CUDA_INCLUDE_DIRS})
-endif()
 # Note: If can't find CUDA, please uncomment the below line and set the path manually
 # set(CUDA_INCLUDE_DIRS /path_to_cuda/include)
 
