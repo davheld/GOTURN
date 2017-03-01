@@ -122,6 +122,12 @@ The file test/test_tracker_vot.cpp is designed to integrate into the VOT testing
 The results from running our tracker on the VOT 2014 dataset can be found [here]
 (http://davheld.github.io/GOTURN/report_vot2014_alov441_challenge.zip).  Our method, in these files, is referred to as "alov441" since ALOV is the dataset that we used for validation of our model.
 
+To reproduce these results, follow the instructions from the VOT website (linked above).  In run_analysis.m, make sure to use the following:
+
+context = create_report_context('report_vot2014_tracker_challenge');
+report_challenge(context, experiments, trackers, sequences); % Use this report for official challenge report
+
+
 ### Evaluate validation set performance
 To evaluate the trained tracker model on the validation set, run:
 
