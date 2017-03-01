@@ -124,9 +124,10 @@ The results from running our tracker on the VOT 2014 dataset can be found [here]
 
 To reproduce these results, follow the instructions from the VOT website (linked above).  In run_analysis.m, make sure to use the following:
 
+```
 context = create_report_context('report_vot2014_tracker_challenge');
 report_challenge(context, experiments, trackers, sequences); % Use this report for official challenge report
-
+```
 
 ### Evaluate validation set performance
 To evaluate the trained tracker model on the validation set, run:
