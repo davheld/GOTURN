@@ -119,6 +119,9 @@ Note that, for the pre-trained model downloaded above, after choosing hyperparam
 To evaluate test set performance, follow the instructions on the [VOT website](http://www.votchallenge.net/howto/index.html).
 The file test/test_tracker_vot.cpp is designed to integrate into the VOT testing framework.
 
+The results from running our tracker on the VOT 2014 dataset can be found [here]
+(http://davheld.github.io/GOTURN/report_vot2014_alov441_challenge.zip).  Our method, in these files, is referred to as "alov441" since ALOV is the dataset that we used for validation of our model.
+
 ### Evaluate validation set performance
 To evaluate the trained tracker model on the validation set, run:
 
