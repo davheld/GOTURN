@@ -13,6 +13,10 @@ find_package(TinyXML REQUIRED)
 
 find_package( OpenCV REQUIRED )
 message("Open CV version is ${OpenCV_VERSION}")
+# Uncomment for no display (e.g. AWS instance)
+# set(Opencv_DEFINITIONS -DNO_DISPLAY)
+add_definitions(${Opencv_DEFINITIONS})
+message("Opencv_DEFINITIONS is ${Opencv_DEFINITIONS}")
 
 find_package(CUDA REQUIRED)
 include_directories(${CUDA_INCLUDE_DIRS})

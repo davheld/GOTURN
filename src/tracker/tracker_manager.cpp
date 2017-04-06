@@ -90,12 +90,14 @@ void TrackerVisualizer::ProcessTrackOutput(
   // Draw estimated bounding box of the target location (red).
   bbox_estimate_uncentered.Draw(255, 0, 0, &full_output);
 
+#ifndef NO_DISPLAY
   // Show the image with the estimated and ground-truth bounding boxes.
   cv::namedWindow("Full output", cv::WINDOW_AUTOSIZE ); // Create a window for display.
   cv::imshow("Full output", full_output );                   // Show our image inside it.
 
   // Pause for pause_val milliseconds, or until user input (if pause_val == 0).
   cv::waitKey(pause_val);
+#endif
 }
 
 void TrackerVisualizer::VideoInit(const Video& video, const size_t video_num) {

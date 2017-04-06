@@ -162,8 +162,10 @@ void ExampleGenerator::VisualizeExample(const cv::Mat& target_pad,
   // Show resized target.
   cv::Mat target_resize;
   cv::resize(target_pad, target_resize, cv::Size(227,227));
+#ifndef NO_DISPLAY
   cv::namedWindow("Target object", cv::WINDOW_AUTOSIZE );// Create a window for display.
   cv::imshow("Target object", target_resize);                   // Show our image inside it.
+#endif
   if (save_images) {
     const string target_name = "Image" + num2str(video_index_) + "_" + num2str(frame_index_) + "target.jpg";
     cv::imwrite(target_name, target_resize);
@@ -179,12 +181,14 @@ void ExampleGenerator::VisualizeExample(const cv::Mat& target_pad,
   bbox_gt_unscaled.Draw(0, 255, 0, &image_resize);
 
   // Show image with bbox.
+#ifndef NO_DISPLAY
   cv::namedWindow("Search_region+gt", cv::WINDOW_AUTOSIZE );// Create a window for display.
   cv::imshow("Search_region+gt", image_resize );                   // Show our image inside it.
+  cv::waitKey(0);
+#endif
+
   if (save_images) {
     const string image_name = "Image" + num2str(video_index_) + "_" + num2str(frame_index_) + "image.jpg";
     cv::imwrite(image_name, image_resize);
   }
-
-  cv::waitKey(0);
 }

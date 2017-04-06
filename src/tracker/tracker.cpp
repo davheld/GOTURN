@@ -84,8 +84,10 @@ void Tracker::ShowTracking(const cv::Mat& target_pad, const cv::Mat& curr_search
   cv::resize(target_pad, target_resize, cv::Size(227, 227));
 
   // Show the resized target.
+#ifndef NO_DISPLAY
   cv::namedWindow("Target", cv::WINDOW_AUTOSIZE );// Create a window for display.
   cv::imshow("Target", target_resize );                   // Show our image inside it.
+#endif
 
   // Resize the image.
   cv::Mat image_resize;
@@ -100,7 +102,9 @@ void Tracker::ShowTracking(const cv::Mat& target_pad, const cv::Mat& curr_search
   image_resize.copyTo(image_with_box);
   bbox_estimate_unscaled.DrawBoundingBox(&image_with_box);
 
+#ifndef NO_DISPLAY
   cv::namedWindow("Estimate", cv::WINDOW_AUTOSIZE );// Create a window for display.
   cv::imshow("Estimate", image_with_box );                   // Show our image inside it.
   cv::waitKey(0);
+#endif
 }
