@@ -64,6 +64,14 @@ sudo apt-get install libopencv-dev
 sudo apt-get install libtinyxml-dev 
 ```
 
+* CPU_ONLY mode (optional and not recommended)
+
+GPUs are strongly suggested as the code runs ~30X slower in CPU_ONLY mode. It is listed as an option only if your system doesn’t have GPU support. To configure this, uncomment the `CPU_ONLY` line in `CMakeLists.txt` as shown below:
+```
+# Uncomment for CPU only:
+set(Caffe_DEFINITIONS -DCPU_ONLY)
+```
+
 ### Compile
 
 From the main directory, type:

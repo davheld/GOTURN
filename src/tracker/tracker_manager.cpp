@@ -38,8 +38,14 @@ void TrackerManager::TrackAll(const size_t start_video_num, const int pause_val)
     tracker_->Init(image_curr, bbox_gt, regressor_);
 
     // Iterate over the remaining frames of the video.
-    for (size_t frame_num = first_frame + 1; frame_num < video.all_frames.size(); ++frame_num) {
-
+    printf("Frames: ");
+    size_t frame_num = first_frame + 1;
+    for (; frame_num < video.all_frames.size(); ++frame_num) {
+      if (frame_num % 100 == 0) {
+          // force flush as printf without newline will buffer
+          printf("%lu, ", frame_num);
+          fflush(stdout);
+      }
       // Get image for the current frame.
       // (The ground-truth bounding box is used only for visualization).
       const bool draw_bounding_box = false;
@@ -63,6 +69,8 @@ void TrackerManager::TrackAll(const size_t start_video_num, const int pause_val)
       ProcessTrackOutput(frame_num, image_curr, has_annotation, bbox_gt,
                            bbox_estimate_uncentered, pause_val);
     }
+    printf("%lu\n", frame_num);
+
     PostProcessVideo();
   }
   PostProcessAll();

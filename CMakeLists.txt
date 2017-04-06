@@ -8,24 +8,34 @@ endif()
 
 find_package(Boost COMPONENTS system filesystem regex REQUIRED)
 
+
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 find_package(TinyXML REQUIRED)
+
 
 find_package( OpenCV REQUIRED )
 message("Open CV version is ${OpenCV_VERSION}")
 
 find_package(CUDA REQUIRED)
-include_directories(${CUDA_INCLUDE_DIRS})
 # Note: If can't find CUDA, please uncomment the below line and set the path manually
 # set(CUDA_INCLUDE_DIRS /path_to_cuda/include)
+include_directories(${CUDA_INCLUDE_DIRS})
+message("CUDA_INCLUDE_DIRS is ${CUDA_INCLUDE_DIRS}")
+
 
 find_package(Caffe REQUIRED)
-include_directories(${Caffe_INCLUDE_DIRS})
-add_definitions(${Caffe_DEFINITIONS})    # ex. -DCPU_ONLY
-message("Caffe_DIR is ${Caffe_DIR}")	#specify Caffe_DIR in /cmake/Modules/FindCaffe.cmake
-# Note: If can't find Caffe, please uncomment the below line and set the path manually
+# If Caffe not found, configure line 5 of cmake/Modules/FindCaffe.cmake
+# If that fails uncomment the two lines below and set paths manually
 # set(Caffe_DIR /path_to_caffe/build/install)
 # set(Caffe_INCLUDE_DIRS /path_to_caffe/build/install/include)
+include_directories(${Caffe_INCLUDE_DIRS})
+# Uncomment for CPU only:
+# set(Caffe_DEFINITIONS -DCPU_ONLY)
+add_definitions(${Caffe_DEFINITIONS})
+message("Caffe_DEFINITIONS is ${Caffe_DEFINITIONS}")
+message("Caffe_DIR is ${Caffe_DIR}")
+message("Caffe_INCLUDE_DIRS is ${Caffe_INCLUDE_DIRS}")
+
 
 set(GLOG_LIB glog)
 

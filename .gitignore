@@ -1,0 +1,6 @@
+# .gitignore
+
+*~
+build/
+nets/models/
+nets/tracker_output/
