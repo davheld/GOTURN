@@ -26,11 +26,13 @@ void VideoLoader::ShowVideos() const {
     const Video& video = videos_[i];
     printf("Showing video %zu: %s\n", i, video.path.c_str());
 
+#ifndef NO_DISPLAY
     // Show the video with the annotations.
     video.ShowVideo();
 
     // Wait for a keystroke.
     cv::waitKey(0);
+#endif
   } // For each video
 }
 
@@ -72,9 +74,11 @@ void VideoLoader::ShowVideosShift() const {
         raw_image.copyTo(full_image_with_bbox);
         bbox.DrawBoundingBox(&full_image_with_bbox);
 
+#ifndef NO_DISPLAY
         cv::namedWindow("Raw image", cv::WINDOW_AUTOSIZE);// Create a window for display.
         cv::imshow("Raw image", full_image_with_bbox);                   // Show our image inside it.
-
+#endif
+          
         example_generator.Reset(bbox_prev, bbox, image_prev, raw_image);
         example_generator.set_indices(video_index, frame_index);
 

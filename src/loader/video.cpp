@@ -45,9 +45,11 @@ void Video::ShowVideo() const {
     if(!image.data ) {
       printf("Could not open or find image %s\n", image_file.c_str());
     } else {
+#ifndef NO_DISPLAY
       cv::namedWindow( "Display window", cv::WINDOW_AUTOSIZE );// Create a window for display.
       cv::imshow( "Display window", image );                   // Show our image inside it.
       cv::waitKey(1);                                          // Wait for a keystroke in the window
+#endif
     }
   } // For all frames in video
 }
