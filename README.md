@@ -134,7 +134,7 @@ To reproduce these results, follow the instructions from the VOT website (linked
 
 ```
 context = create_report_context('report_vot2014_tracker_challenge');
-report_challenge(context, experiments, trackers, sequences); % Use this report for official challenge report
+report_challenge(context, experiments, trackers, sequences, 'methodology', 'vot2014'); % Use this report for official challenge report
 ```
 
 ### Evaluate validation set performance
