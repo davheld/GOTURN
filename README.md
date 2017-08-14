@@ -2,7 +2,7 @@
 
 This is the C++ code for our tracker, GOTURN: Generic Object Tracking Using Regression Networks.
 
-**_python_** implementation of our tracker can be found in @nrupatunga's [repository](https://github.com/nrupatunga/PY-GOTURN/)
+A _python_ implementation of our tracker can be found in @nrupatunga's [repository](https://github.com/nrupatunga/PY-GOTURN/)
 
 GOTURN appeared in this paper:
 
